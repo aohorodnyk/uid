@@ -45,13 +45,7 @@ func (p Providing) Uint16(id []uint16) Identifier {
 	for idx, val := range id {
 		curIdx := idx * SizeUint16
 		dstIdx := curIdx + SizeUint16
-		tmp := data[curIdx:dstIdx]
-
-		binary.LittleEndian.PutUint16(tmp, val)
-
-		for i := 0; i < SizeUint16; i++ {
-			data[curIdx+i] = tmp[i]
-		}
+		binary.LittleEndian.PutUint16(data[curIdx:dstIdx], val)
 	}
 
 	return p.Byte(data)
@@ -72,13 +66,7 @@ func (p Providing) Uint32(id []uint32) Identifier {
 	for idx, val := range id {
 		curIdx := idx * SizeUint32
 		dstIdx := curIdx + SizeUint32
-		tmp := data[curIdx:dstIdx]
-
-		binary.LittleEndian.PutUint32(tmp, val)
-
-		for i := 0; i < SizeUint32; i++ {
-			data[curIdx+i] = tmp[i]
-		}
+		binary.LittleEndian.PutUint32(data[curIdx:dstIdx], val)
 	}
 
 	return p.Byte(data)
@@ -99,13 +87,7 @@ func (p Providing) Uint64(id []uint64) Identifier {
 	for idx, val := range id {
 		curIdx := idx * SizeUint64
 		dstIdx := curIdx + SizeUint64
-		tmp := data[curIdx:dstIdx]
-
-		binary.LittleEndian.PutUint64(tmp, val)
-
-		for i := 0; i < SizeUint64; i++ {
-			data[curIdx+i] = tmp[i]
-		}
+		binary.LittleEndian.PutUint64(data[curIdx:dstIdx], val)
 	}
 
 	return p.Byte(data)
