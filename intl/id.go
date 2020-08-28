@@ -117,9 +117,6 @@ func sizeNewArray(src []byte, size int) int {
 	if len(src)%size != 0 {
 		res += 1
 	}
-	if res < 0 {
-		res = 1
-	}
 	return res
 }
 
