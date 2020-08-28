@@ -15,6 +15,72 @@ func TestReadBytesWrongSize(t *testing.T) {
 	bs := readBytes([]byte{1, 2, 3}, 1, 2)
 	assert.Equal(t, [][]byte{}, bs)
 }
+func TestNewArray(t *testing.T) {
+	for idx, prov := range providerTestNewArray() {
+		t.Run(fmt.Sprintf("test_new_array_%d", idx), func(t *testing.T) {
+			src := make([]byte, prov.srcSize)
+			act := sizeNewArray(src, prov.size)
+
+			assert.Equal(t, prov.exp, act)
+		})
+	}
+}
+
+type providerTestNewArrayType struct {
+	srcSize int
+	size    int
+	exp     int
+}
+
+func providerTestNewArray() []providerTestNewArrayType {
+	return []providerTestNewArrayType{
+		{
+			srcSize: 1,
+			size:    2,
+			exp:     1,
+		},
+		{
+			srcSize: 2,
+			size:    8,
+			exp:     1,
+		},
+		{
+			srcSize: 12,
+			size:    16,
+			exp:     1,
+		},
+		{
+			srcSize: 4,
+			size:    4,
+			exp:     1,
+		},
+		{
+			srcSize: 6,
+			size:    4,
+			exp:     2,
+		},
+		{
+			srcSize: 8,
+			size:    4,
+			exp:     2,
+		},
+		{
+			srcSize: 9,
+			size:    4,
+			exp:     3,
+		},
+		{
+			srcSize: 12,
+			size:    4,
+			exp:     3,
+		},
+		{
+			srcSize: 12,
+			size:    8,
+			exp:     2,
+		},
+	}
+}
 
 func TestID(t *testing.T) {
 	for idx, prov := range providerID() {

@@ -3,7 +3,6 @@ package intl
 import (
 	"encoding/binary"
 	"errors"
-	"math"
 )
 
 const ErrorMsgSizeDivisible2 = "size of data must be divisible by 2"
@@ -114,7 +113,14 @@ func (id ID) Uint64() ([]uint64, error) {
 }
 
 func sizeNewArray(src []byte, size int) int {
-	return int(math.Ceil(float64(len(src)) / float64(size)))
+	res := len(src) / size
+	if len(src)%size != 0 {
+		res += 1
+	}
+	if res < 0 {
+		res = 1
+	}
+	return res
 }
 
 func readBytes(src []byte, dstParts int, dstSize int) [][]byte {
