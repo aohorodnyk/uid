@@ -21,6 +21,18 @@ func NewEncoderBase32Hex() Encoder {
 	return NewEncoderCustom(base32.HexEncoding.WithPadding(base32.NoPadding))
 }
 
+func NewEncoderBase36() Encoder {
+	return NewEncoderCustom(&BaseXEncoding{base: 36})
+}
+
+func NewEncoderBaseX(base int) Encoder {
+	return NewEncoderCustom(&BaseXEncoding{base: base})
+}
+
+func NewEncoderBase62() Encoder {
+	return NewEncoderCustom(&BaseXEncoding{base: 62})
+}
+
 func NewEncoderBase64Std() Encoder {
 	return NewEncoderCustom(base64.RawStdEncoding)
 }

@@ -2,7 +2,7 @@ package intl
 
 func NewProvider() Provider {
 	return &Providing{
-		randSize: 20,
+		randSize: SizeDefault,
 		rand:     NewRand(),
 		enc:      NewEncoder(),
 	}

@@ -40,6 +40,39 @@ func TestBase32HexEncoding(t *testing.T) {
 	assert.Equal(t, bytes, actDec)
 }
 
+func TestBase36Encoding(t *testing.T) {
+	bytes := []byte{35, 255, 132, 235}
+	enc := NewEncoderBase36()
+	actEnc := enc.EncodeToString(bytes)
+	actDec, err := enc.DecodeString(actEnc)
+
+	assert.Equal(t, "9zkpgr", actEnc)
+	assert.Nil(t, err)
+	assert.Equal(t, bytes, actDec)
+}
+
+func TestBase62Encoding(t *testing.T) {
+	bytes := []byte{61, 234, 123, 93}
+	enc := NewEncoderBase62()
+	actEnc := enc.EncodeToString(bytes)
+	actDec, err := enc.DecodeString(actEnc)
+
+	assert.Equal(t, "18iBoF", actEnc)
+	assert.Nil(t, err)
+	assert.Equal(t, bytes, actDec)
+}
+
+func TestBase23Encoding(t *testing.T) {
+	bytes := []byte{61, 234, 123, 93}
+	enc := NewEncoderBaseX(23)
+	actEnc := enc.EncodeToString(bytes)
+	actDec, err := enc.DecodeString(actEnc)
+
+	assert.Equal(t, "7090dm6", actEnc)
+	assert.Nil(t, err)
+	assert.Equal(t, bytes, actDec)
+}
+
 func TestBase64UrlEncoding(t *testing.T) {
 	bytes := []byte{254, 152}
 	enc := NewEncoderBase64Url()
