@@ -44,4 +44,4 @@ Do not hesitate to use [issue ticket](https://github.com/aohorodnyk/uidgen/issue
 
 * [General GitHub documentation](http://help.github.com/)
 * [GitHub pull request documentation](https://help.github.com/articles/about-pull-requests/)
-* [Read the Issue Guidelines by @necolas](https://github.com/necolas/issue-guidelines/blob/master/CONTRIBUTING.md) for more details
+
