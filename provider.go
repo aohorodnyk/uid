@@ -2,6 +2,58 @@ package intl
 
 import "encoding/binary"
 
+type Provider interface {
+	Generate() (Identifier, error)
+	Parse(id string) (Identifier, error)
+	Byte(id []byte) Identifier
+	Int16(id []int16) Identifier
+	Uint16(id []uint16) Identifier
+	Int32(id []int32) Identifier
+	Uint32(id []uint32) Identifier
+	Int64(id []int64) Identifier
+	Uint64(id []uint64) Identifier
+}
+
+func NewProviderCustom(size uint32, rand Randomizer, enc Encoder) Provider {
+	return &Providing{
+		randSize: size,
+		rand:     rand,
+		enc:      enc,
+	}
+}
+
+func NewProvider() Provider {
+	return NewProviderCustom(SizeDefault, NewRand(), NewEncoder())
+}
+
+func NewProviderSize(size uint32) Provider {
+	return NewProviderCustom(size, NewRand(), NewEncoder())
+}
+
+func NewProvider36() Provider {
+	return NewProviderCustom(SizeDefault, NewRand(), NewEncoderBase36())
+}
+
+func NewProvider36Size(size uint32) Provider {
+	return NewProviderCustom(size, NewRand(), NewEncoderBase36())
+}
+
+func NewProvider62() Provider {
+	return NewProviderCustom(SizeDefault, NewRand(), NewEncoderBase62())
+}
+
+func NewProvider62Size(size uint32) Provider {
+	return NewProviderCustom(size, NewRand(), NewEncoderBase62())
+}
+
+func NewProviderUrl64() Provider {
+	return NewProviderCustom(SizeDefault, NewRand(), NewEncoderBase64Url())
+}
+
+func NewProviderUrl64Size(size uint32) Provider {
+	return NewProviderCustom(size, NewRand(), NewEncoderBase64Url())
+}
+
 type Providing struct {
 	randSize uint32
 	rand     Randomizer

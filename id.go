@@ -9,9 +9,31 @@ const ErrorMsgSizeDivisible2 = "size of data must be divisible by 2"
 const ErrorMsgSizeDivisible4 = "size of data must be divisible by 4"
 const ErrorMsgSizeDivisible8 = "size of data must be divisible by 8"
 
+type Identifier interface {
+	String() string
+	Byte() []byte
+	Int16() ([]int16, error)
+	Uint16() ([]uint16, error)
+	Int32() ([]int32, error)
+	Uint32() ([]uint32, error)
+	Int64() ([]int64, error)
+	Uint64() ([]uint64, error)
+}
+
 type ID struct {
 	data []byte
 	enc  Encoder
+}
+
+func NewID(data []byte, enc Encoder) Identifier {
+	return &ID{
+		data: data,
+		enc:  enc,
+	}
+}
+
+func NewIDStdBase32(data []byte) Identifier {
+	return NewID(data, NewEncoder())
 }
 
 func (id ID) String() string {

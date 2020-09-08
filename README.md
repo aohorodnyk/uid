@@ -39,12 +39,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/aohorodnyk/uidgen"
+	"github.com/aohorodnyk/uid"
 	"log"
 )
 
 func main() {
-	p := uidgen.NewProvider()
+	p := uid.NewProvider()
 	g, err := p.Generate()
 	if err != nil {
 		log.Panicln("Cannot generate random string")
@@ -67,12 +67,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/aohorodnyk/uidgen"
+	"github.com/aohorodnyk/uid"
 	"log"
 )
 
 func main() {
-	p := uidgen.NewProvider()
+	p := uid.NewProvider()
 	g, err := p.Parse("WY5WHCHAHISDRI35UOHTQ3ZS4THJRMP3")
 	if err != nil {
 		log.Panicln("Cannot parse random string")
@@ -95,12 +95,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/aohorodnyk/uidgen"
+	"github.com/aohorodnyk/uid"
 	"log"
 )
 
 func main() {
-	p := uidgen.NewProviderSize(32)
+	p := uid.NewProviderSize(32)
 	g, err := p.Generate()
 	if err != nil {
 		log.Panicln("Cannot generate random string")
@@ -128,17 +128,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/aohorodnyk/uidgen"
-	uidgenintl "github.com/aohorodnyk/uidgen/intl"
+	"github.com/aohorodnyk/uid"
 	"log"
 )
 
 func main() {
 	// Can be used as alternative:
-	// * uidgen.NewProvider62Size(8)
-	// * uidgen.NewProviderCustom(8, uidgenintl.NewRand(), uidgenintl.NewEncoderBase62())
-	// * uidgen.NewProviderCustom(8, uidgenintl.NewRand(), uidgenintl.NewEncoderBaseX(62))
-	p := uidgen.NewProviderCustom(8, uidgenintl.NewRand(), uidgenintl.NewEncoderBase62())
+	// * uid.NewProvider62Size(8)
+	// * uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBase62())
+	// * uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBaseX(62))
+	p := uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBase62())
 	g, err := p.Generate()
 	if err != nil {
 		log.Panicln("Cannot generate random string")
@@ -161,18 +160,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/aohorodnyk/uidgen"
-	uidgenintl "github.com/aohorodnyk/uidgen/intl"
+	"github.com/aohorodnyk/uid"
 	"log"
 )
 
 func main() {
 	// Can be used as alternative:
-	// * uidgen.NewProvider62()
-	// * uidgen.NewProvider62Size(8)
-	// * uidgen.NewProviderCustom(8, uidgenintl.NewRand(), uidgenintl.NewEncoderBase62())
-	// * uidgen.NewProviderCustom(8, uidgenintl.NewRand(), uidgenintl.NewEncoderBaseX(62))
-	p := uidgen.NewProviderCustom(8, uidgenintl.NewRand(), uidgenintl.NewEncoderBase62())
+	// * uid.NewProvider62()
+	// * uid.NewProvider62Size(8)
+	// * uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBase62())
+	// * uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBaseX(62))
+	p := uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBase62())
 	g, err := p.Parse("8twXZ4Nkui7")
 	if err != nil {
 		log.Panicln("Cannot parse random string")
@@ -190,5 +188,5 @@ func main() {
 ```
 
 ## Contributing
-All contributions have to follow the [CONTRIBUTING.md document](https://github.com/aohorodnyk/uidgen/blob/main/CONTRIBUTING.md)
+All contributions have to follow the [CONTRIBUTING.md document](https://github.com/aohorodnyk/uid/blob/main/CONTRIBUTING.md)
 If you have any questions/issues/feature requests do not hesitate to create a ticket.
