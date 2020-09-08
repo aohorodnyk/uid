@@ -1,4 +1,4 @@
-module github.com/aohorodnyk/uidgen
+module github.com/aohorodnyk/uid
 
 go 1.14
 
