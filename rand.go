@@ -1,4 +1,4 @@
-package intl
+package uid
 
 import (
 	cryptRand "crypto/rand"

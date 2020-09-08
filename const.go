@@ -1,4 +1,4 @@
-package intl
+package uid
 
 const SizeInt16 = 2
 const SizeUint16 = SizeInt16

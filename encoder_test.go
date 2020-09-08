@@ -1,10 +1,11 @@
-package intl
+package uid
 
 import (
 	"errors"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBase16Encoding(t *testing.T) {

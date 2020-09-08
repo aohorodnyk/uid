@@ -1,4 +1,4 @@
-package intl
+package uid
 
 type RandError struct {
 	error
