@@ -5,6 +5,8 @@
 * [Examples](#examples)
 * [Contributing](#contributing)
 
+![Test](https://github.com/aohorodnyk/uid/workflows/Test/badge.svg)
+
 ## Motivation
 I had an experience with UUID, and it's perfect for various use cases. For some number of projects I have a few additional requirements which UUID doesn't meet:
 1. A unique string should achieve security requirements
