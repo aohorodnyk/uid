@@ -5,21 +5,21 @@ This should be as easy as possible for you but there are a few things to conside
 The following guidelines for contribution should be followed if you want to submit an issue, or a pull request.
 
 ## Code Of Conduct
-All discussion inside the project (issues, PRs, etc.) have to follow [Code Of Conduct](https://github.com/aohorodnyk/uidgen/blob/main/CODE_OF_CONDUCT.md).
+All discussion inside the project (issues, PRs, etc.) have to follow [Code Of Conduct](https://github.com/aohorodnyk/uid/blob/main/CODE_OF_CONDUCT.md).
 
 ## Questions
-If you have any question, you should use [issue ticket](https://github.com/aohorodnyk/uidgen/issues) as well as for issues/feature requests.
-Do not hesitate to use [issue ticket](https://github.com/aohorodnyk/uidgen/issues) for all your needs.
+If you have any question, you should use [issue ticket](https://github.com/aohorodnyk/uid/issues) as well as for issues/feature requests.
+Do not hesitate to use [issue ticket](https://github.com/aohorodnyk/uid/issues) for all your needs.
 
 ## How To Prepare
 
 * You need a [GitHub account](https://github.com/join)
-* Submit an [issue ticket](https://github.com/aohorodnyk/uidgen/issues) for your issue, or question if there is no one yet
+* Submit an [issue ticket](https://github.com/aohorodnyk/uid/issues) for your issue, or question if there is no one yet
 	* Describe the issue and include steps to reproduce if it's a bug
 	* Ensure to mention the earliest version that you know is affected
 * If you are able and want to fix this, fork the repository on GitHub
-	* If fix is small you can just [create a pull request](https://github.com/aohorodnyk/uidgen/pulls) with your changes
-	* If you want to do some changes in API or request big feature, submit an ticket before [issue ticket](https://github.com/aohorodnyk/uidgen/issues) to save your time
+	* If fix is small you can just [create a pull request](https://github.com/aohorodnyk/uid/pulls) with your changes
+	* If you want to do some changes in API or request big feature, submit an ticket before [issue ticket](https://github.com/aohorodnyk/uid/issues) to save your time
 
 ## Make Changes
 
