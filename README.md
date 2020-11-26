@@ -5,7 +5,7 @@
 * [Examples](#examples)
 * [Contributing](#contributing)
 
-![Test](https://github.com/aohorodnyk/uid/workflows/Test/badge.svg) ![Test](https://github.com/aohorodnyk/uid/workflows/golangci-lint/badge.svg)
+![Test](https://github.com/aohorodnyk/uid/workflows/Test/badge.svg) ![golangci-lint](https://github.com/aohorodnyk/uid/workflows/golangci-lint/badge.svg)
 
 ## Motivation
 I had an experience with UUID, and it's perfect for various use cases. For some number of projects I have a few additional requirements which UUID doesn't meet:
