@@ -1,5 +1,4 @@
 # How To Contribute
-
 We like to encourage you to contribute to the repository.
 This should be as easy as possible for you but there are a few things to consider when contributing.
 The following guidelines for contribution should be followed if you want to submit an issue, or a pull request.
