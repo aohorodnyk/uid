@@ -8,7 +8,9 @@
 ![Test](https://github.com/aohorodnyk/uid/workflows/Test/badge.svg) ![golangci-lint](https://github.com/aohorodnyk/uid/workflows/golangci-lint/badge.svg)
 
 ## Motivation
-I had an experience with UUID, and it's perfect for various use cases. For some number of projects I have a few additional requirements which UUID doesn't meet:
+I had an experience with UUID, and it's perfect for various use cases. For some number of projects I have few additional requirements which UUID doesn't meet:
+1. Custom size for random hash
+1. Custom string encoder
 1. A unique string should achieve security requirements
 1. Should be readable for business code generation
 1. String representation should be shorter than UUID
@@ -17,10 +19,10 @@ How requirements achieved:
 1. By default, used `crypto/rand` implementation, but it extendable and can be simply changed to any other implementation (`math/rand` or any custom one)
 1. By default, used base32, which is readable (because of the list of supported symbols), but can be simply replaced to any another implementation
 1. By default, used base32, as a result, 20 random bytes (160 bits) are encoded to 32 symbols (UUID has 122 random bits in 32-36 symbols)
-1. Supported all main base encoders: base16, bas32, base36, base62, base64, and all supported by bin int
+1. Supported all main base encoders: base16, base32, base36, base62, base64, and all supported by bin int
 
 ## Quick Architecture Review
-The main endpoint which should be used from external applications or libraries is located in the file `/facade.go`.
+The main endpoint which should be used from external applications or libraries is located in the file `provider.go`.
 The file can be found functions to create default or custom providers.
 `Provider` is a struct that can generate new ID (random number of bytes) or parse from a string, decode from ints, initialize from bytes ID.
 `ID` is a struct that can encode or dump the id (random number of bytes) to a string, bytes, ints.
@@ -32,7 +34,7 @@ The file can be found functions to create default or custom providers.
 ## Examples
 
 ### Default Provider
-In the file `/facade.go` can be found a list of main exported functions for the project
+In the file `provider.go` can be found a list of main exported functions for the project.
 The default provider has random bytes size `20`, randomizer from `crypto/rand`, the encoder is `base32` with disabled paddings.
 
 #### Generate random base32 string with default provider
