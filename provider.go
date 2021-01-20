@@ -4,6 +4,7 @@ import "encoding/binary"
 
 type Provider interface {
 	Generate() (Identifier, error)
+	MustGenerate() Identifier
 	Parse(id string) (Identifier, error)
 	Byte(id []byte) Identifier
 	Int16(id []int16) Identifier
@@ -67,6 +68,16 @@ func (p Providing) Generate() (Identifier, error) {
 	}
 
 	return p.Byte(data), nil
+}
+
+// Generate random identifier or panic error
+func (p Providing) MustGenerate() Identifier {
+	id, err := p.Generate()
+	if err != nil {
+		panic(err)
+	}
+
+	return id
 }
 
 func (p Providing) Parse(id string) (Identifier, error) {

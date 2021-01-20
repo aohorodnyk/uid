@@ -44,15 +44,11 @@ package main
 import (
 	"fmt"
 	"github.com/aohorodnyk/uid"
-	"log"
 )
 
 func main() {
 	p := uid.NewProvider()
-	g, err := p.Generate()
-	if err != nil {
-		log.Panicln("Cannot generate random string")
-	}
+	g := p.MustGenerate()
 
 	fmt.Println(g.String()) // WY5WHCHAHISDRI35UOHTQ3ZS4THJRMP3
 	fmt.Println(g.Byte()) // [182 59 99 136 224 58 36 56 163 125 163 143 56 111 50 228 206 152 177 251]
@@ -100,15 +96,11 @@ package main
 import (
 	"fmt"
 	"github.com/aohorodnyk/uid"
-	"log"
 )
 
 func main() {
 	p := uid.NewProviderSize(32)
-	g, err := p.Generate()
-	if err != nil {
-		log.Panicln("Cannot generate random string")
-	}
+	g := p.MustGenerate()
 
 	fmt.Println(g.String()) // 3C4SZMODOFHXKDFPRZBBEEMBDB22DUL2A6TPOZXAHDAJJO56PGGQ
 	fmt.Println(g.Byte()) // [216 185 44 177 195 113 79 117 12 175 142 66 18 17 129 24 117 161 209 122 7 166 247 102 224 56 192 148 187 190 121 141]
@@ -133,7 +125,6 @@ package main
 import (
 	"fmt"
 	"github.com/aohorodnyk/uid"
-	"log"
 )
 
 func main() {
@@ -142,10 +133,7 @@ func main() {
 	// * uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBase62())
 	// * uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBaseX(62))
 	p := uid.NewProviderCustom(8, uid.NewRand(), uid.NewEncoderBase62())
-	g, err := p.Generate()
-	if err != nil {
-		log.Panicln("Cannot generate random string")
-	}
+	g := p.MustGenerate()
 
 	fmt.Println(g.String()) // 8twXZ4Nkui7
 	fmt.Println(g.Byte()) // [98 186 154 157 247 107 100 139] // 8 bytes

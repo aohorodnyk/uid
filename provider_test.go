@@ -7,6 +7,18 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestProvideMustGenerateError(t *testing.T) {
+	defer func() {
+		if r := recover(); r == nil {
+			t.Errorf("provider.MustGenerate did not panic")
+		}
+	}()
+
+	p := NewProviderCustom(0, NewRand(), NewEncoder())
+	b := p.MustGenerate()
+	assert.Nil(t, b)
+}
+
 func TestProvidingGenerateError(t *testing.T) {
 	p := NewProviderCustom(0, NewRand(), NewEncoder())
 	b, err := p.Generate()
@@ -31,49 +43,48 @@ func TestProvidingRandom(t *testing.T) {
 			prov := NewProviderSize(size)
 			cmp := assert.New(t)
 
-			idSource, err := prov.Generate()
-			cmp.Nil(err)
+			idSource := prov.MustGenerate()
 
 			id1 := prov.Byte(idSource.Byte())
 			compareID(t, idSource, id1)
 
 			id2, err := prov.Parse(id1.String())
-			cmp.Nil(err)
+			cmp.NoError(err)
 			compareID(t, idSource, id2)
 			compareID(t, id1, id2)
 
 			int16s, err := id2.Int16()
-			cmp.Nil(err)
+			cmp.NoError(err)
 			id3 := prov.Int16(int16s)
 			compareID(t, idSource, id3)
 			compareID(t, id2, id3)
 
 			uint16s, err := id3.Uint16()
-			cmp.Nil(err)
+			cmp.NoError(err)
 			id4 := prov.Uint16(uint16s)
 			compareID(t, idSource, id4)
 			compareID(t, id3, id4)
 
 			int32s, err := id4.Int32()
-			cmp.Nil(err)
+			cmp.NoError(err)
 			id5 := prov.Int32(int32s)
 			compareID(t, idSource, id5)
 			compareID(t, id4, id5)
 
 			uint32s, err := id4.Uint32()
-			cmp.Nil(err)
+			cmp.NoError(err)
 			id6 := prov.Uint32(uint32s)
 			compareID(t, idSource, id6)
 			compareID(t, id5, id6)
 
 			int64s, err := id4.Int64()
-			cmp.Nil(err)
+			cmp.NoError(err)
 			id7 := prov.Int64(int64s)
 			compareID(t, idSource, id7)
 			compareID(t, id6, id7)
 
 			uint64s, err := id4.Uint64()
-			cmp.Nil(err)
+			cmp.NoError(err)
 			id8 := prov.Uint64(uint64s)
 			compareID(t, idSource, id8)
 			compareID(t, id7, id8)
@@ -85,43 +96,43 @@ func compareID(t *testing.T, id1, id2 Identifier) {
 	cmp := assert.New(t)
 
 	i16s, err := id1.Int16()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	ui16s, err := id1.Uint16()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	i32s, err := id1.Int32()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	ui32s, err := id1.Uint32()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	i64s, err := id1.Int64()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	ui64s, err := id1.Uint64()
-	cmp.Nil(err)
+	cmp.NoError(err)
 
 	cmp.Equal(id1.Byte(), id2.Byte())
 	cmp.Equal(id1.String(), id2.String())
 
 	i16d, err := id2.Int16()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	cmp.Equal(i16s, i16d)
 
 	ui16d, err := id2.Uint16()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	cmp.Equal(ui16s, ui16d)
 
 	i32d, err := id2.Int32()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	cmp.Equal(i32s, i32d)
 
 	ui32d, err := id2.Uint32()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	cmp.Equal(ui32s, ui32d)
 
 	i64d, err := id2.Int64()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	cmp.Equal(i64s, i64d)
 
 	ui64d, err := id2.Uint64()
-	cmp.Nil(err)
+	cmp.NoError(err)
 	cmp.Equal(ui64s, ui64d)
 }
 
